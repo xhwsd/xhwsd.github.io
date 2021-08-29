@@ -9,7 +9,7 @@
 <meta name="description" content="佛系搬砖 - 工作多少我已看淡，按时下班我已不再期盼，只想安安静静搬砖...">
 <meta name="theme-color" content="#000">
 <title>IM.WSD</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xhwsd/xhwsd.github.io@main/favicon.ico?v=1630243674671">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xhwsd/xhwsd.github.io@main/favicon.ico?v=1630245961047">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xhwsd/xhwsd.github.io@main/media/css/gemini.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xhwsd/xhwsd.github.io@main/media/fonts/font-awesome.css">
 <link
@@ -187,7 +187,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -515,6 +515,31 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wsd.im/post/wen-zhang-ce-shi/"" data-c="
+          &lt;h2 id=&#34;代码高亮&#34;&gt;代码高亮&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;/**
+ * 新增后
+ * 
+ * @param mixed $model 当前模型实例
+ */
+public static function onAfterInsert($model)
+{
+    // 回标各单据
+    if ($model-&amp;gt;receipt_type == &#39;scm_bill&#39;) {
+        // 采购账单
+        $model-&amp;gt;receipt-&amp;gt;status = ScmBill::STATUS_PENDING;
+        $model-&amp;gt;receipt-&amp;gt;payment_id = $model-&amp;gt;payment_id;
+        $model-&amp;gt;receipt-&amp;gt;save();
+    } else if ($model-&amp;gt;receipt_type == &#39;oms_aftersale&#39;) {
+        // 售后退款
+        
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+">文章测试</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://wsd.im/post/about/"" data-c="
