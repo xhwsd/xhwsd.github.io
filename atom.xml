@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wsd.im</id>
-    <title>IM.WSD</title>
-    <updated>2021-08-30T06:59:03.687Z</updated>
+    <title>WSD.IM</title>
+    <updated>2021-08-31T01:18:04.876Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wsd.im"/>
     <link rel="self" href="https://wsd.im/atom.xml"/>
-    <subtitle>佛系搬砖 - 工作多少我已看淡，按时下班我已不再期盼，只想安安静静搬砖...</subtitle>
     <logo>https://wsd.im/images/avatar.png</logo>
     <icon>https://wsd.im/favicon.ico</icon>
-    <rights>All rights reserved 2021, IM.WSD</rights>
+    <rights>All rights reserved 2021, WSD.IM</rights>
     <entry>
         <title type="html"><![CDATA[文章测试]]></title>
         <id>https://wsd.im/post/wen-zhang-ce-shi/</id>
