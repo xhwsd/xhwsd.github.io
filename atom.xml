@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wsd.im</id>
     <title>WSD.IM</title>
-    <updated>2021-08-31T08:32:20.350Z</updated>
+    <updated>2021-08-31T08:33:27.106Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wsd.im"/>
     <link rel="self" href="https://wsd.im/atom.xml"/>
@@ -10,38 +10,6 @@
     <logo>https://wsd.im/images/avatar.png</logo>
     <icon>https://wsd.im/favicon.ico</icon>
     <rights>All rights reserved 2021, WSD.IM</rights>
-    <entry>
-        <title type="html"><![CDATA[文章测试]]></title>
-        <id>https://wsd.im/post/wen-zhang-ce-shi/</id>
-        <link href="https://wsd.im/post/wen-zhang-ce-shi/">
-        </link>
-        <updated>2021-08-29T14:02:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>文章测试...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>文章测试...</p>
-<!-- more -->
-<h2 id="代码高亮">代码高亮</h2>
-<pre><code class="language-php">/**
- * 新增后
- * 
- * @param mixed $model 当前模型实例
- */
-public static function onAfterInsert($model)
-{
-    // 回标各单据
-    if ($model-&gt;receipt_type == 'scm_bill') {
-        // 采购账单
-        $model-&gt;receipt-&gt;status = ScmBill::STATUS_PENDING;
-        $model-&gt;receipt-&gt;payment_id = $model-&gt;payment_id;
-        $model-&gt;receipt-&gt;save();
-    } else if ($model-&gt;receipt_type == 'oms_aftersale') {
-        // 售后退款
-        
-    }
-}
-</code></pre>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://wsd.im/post/hello-gridea/</id>
