@@ -9,7 +9,7 @@
 <meta name="description" content="什么东东的博客！">
 <meta name="theme-color" content="#000">
 <title>Hello Gridea | WSD.IM</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1630425018455">
+<link rel="shortcut icon" href="/favicon.ico?v=1630507339903">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -569,6 +569,10 @@
 
             </div>
             
+              <div class="reward-btn">
+                <div class="reward-btn-text">赞赏</div>
+              </div>
+            
             
               <div class="post-footer">
   <ul class="post-copyright">
@@ -1016,11 +1020,14 @@
       });
     }
 
-    rewardBtn.addEventListener('click', (e) => {
-      jQuery.Velocity(mask, 'transition.slideDownIn', {
-        duration: 400
-      })
-    });
+    // 解决未开启打赏JS报错 xhwsd@qq.com 2021-8-31
+    if (rewardBtn) {
+      rewardBtn.addEventListener('click', (e) => {
+        jQuery.Velocity(mask, 'transition.slideDownIn', {
+          duration: 400
+        })
+      });
+    }
 
     close.addEventListener('click', (e) => {
       e.preventDefault();
