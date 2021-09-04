@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="/styles/main.css">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 尝试解决不蒜子 (busuanzi) 502 xhwsd@qq.com 2021-9-4 -->
 <meta name="referrer" content="no-referrer-when-downgrade">
 <script src="/media/js/jquery.js"></script>
 <script src="/media/hljs/highlight.js"></script>
@@ -239,14 +240,17 @@
       <div class="social-item">
         
           
+            <!-- 修改社交链接为“_blank”方式打开 xhwsd@qq.com 2021-9-2 -->
             <a href="https://url.wsd.im/qq" target="_blank">
               <i class="fa fa-qq" title="QQ"></i>
             </a>
           
+            <!-- 修改社交链接为“_blank”方式打开 xhwsd@qq.com 2021-9-2 -->
             <a href="https://url.wsd.im/yx" target="_blank">
               <i class="fa fa-envelope" title="邮箱"></i>
             </a>
           
+            <!-- 修改社交链接为“_blank”方式打开 xhwsd@qq.com 2021-9-2 -->
             <a href="https://url.wsd.im/ds" target="_blank">
               <i class="fa fa-jpy" title="打赏"></i>
             </a>
@@ -1110,6 +1114,7 @@ public static function onAfterInsert($model)
       });
     }
 
+    // 解决未开启打赏JS报错 xhwsd@qq.com 2021-9-1
     if (rewardBtn) {
       rewardBtn.addEventListener('click', (e) => {
         jQuery.Velocity(mask, 'transition.slideDownIn', {
