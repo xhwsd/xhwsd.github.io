@@ -8,7 +8,7 @@
 <meta name="keywords" content="万事达,万顺达,威盛德,东子">
 <meta name="description" content="什么东东的博客！">
 <meta name="theme-color" content="#000">
-<title>Hello Gridea | WSD.IM</title>
+<title>ThinkPHP6之模型事件的触发条件 | WSD.IM</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1630932273590">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -42,8 +42,8 @@
 
 
 
-  <meta name="description" content="Hello Gridea" />
-  <meta name="keywords" content="Gridea" />
+  <meta name="description" content="ThinkPHP6之模型事件的触发条件" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -272,7 +272,28 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#%E6%A8%A1%E5%9E%8B%E4%BA%8B%E4%BB%B6">模型事件</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B">建立模型</a></li>
+<li><a href="#%E6%A8%A1%E5%9E%8B%E4%BB%A3%E7%A0%81appmodelusersphp">模型代码<code>app/model/Users.php</code></a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%A1%A8">数据表</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81">测试代码</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C">执行结果</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a>
+<ul>
+<li><a href="#create">create()</a></li>
+<li><a href="#insert">insert()</a></li>
+<li><a href="#update">update()</a></li>
+<li><a href="#save">save()</a></li>
+<li><a href="#delete">delete()</a></li>
+<li><a href="#find">find()</a></li>
+<li><a href="#destroy">destroy()</a></li>
+<li><a href="#restore">restore()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -540,8 +561,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://wsd.im/post/hello-gridea/">
-      Hello Gridea
+    <a class="post-title-link" href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">
+      ThinkPHP6之模型事件的触发条件
     </a>
   </h1>
   <div class="post-meta">
@@ -549,36 +570,23 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2018-12-12 00:00:00">2018-12-12</span>
+      <span class="publish-time" data-t="2021-09-06 20:32:42">2021-09-06</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
     <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://wsd.im/tag/LjLWkx2fG/">
-        <span>Gridea</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2<span class="language" data-lan="minute">分钟</span></span>
+      <span>6<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>298<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>1148<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/hello-gridea/" data-flag-title="Hello Gridea" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/" data-flag-title="ThinkPHP6之模型事件的触发条件" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -587,27 +595,249 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <h2 id="模型事件">模型事件</h2>
+<p>首先，从手册上，我们可以知道模型支持以下事件：</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+<th>事件方法名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after_read</td>
+<td>查询后</td>
+<td>onAfterRead</td>
+</tr>
+<tr>
+<td>before_insert</td>
+<td>新增前</td>
+<td>onBeforeInsert</td>
+</tr>
+<tr>
+<td>after_insert</td>
+<td>新增后</td>
+<td>onAfterInsert</td>
+</tr>
+<tr>
+<td>before_update</td>
+<td>更新前</td>
+<td>onBeforeUpdate</td>
+</tr>
+<tr>
+<td>after_update</td>
+<td>更新后</td>
+<td>onAfterUpdate</td>
+</tr>
+<tr>
+<td>before_write</td>
+<td>写入前</td>
+<td>onBeforeWrite</td>
+</tr>
+<tr>
+<td>after_write</td>
+<td>写入后</td>
+<td>onAfterWrite</td>
+</tr>
+<tr>
+<td>before_delete</td>
+<td>删除前</td>
+<td>onBeforeDelete</td>
+</tr>
+<tr>
+<td>after_delete</td>
+<td>删除后</td>
+<td>onAfterDelete</td>
+</tr>
+<tr>
+<td>before_restore</td>
+<td>恢复前</td>
+<td>onBeforeRestore</td>
+</tr>
+<tr>
+<td>after_restore</td>
+<td>恢复后</td>
+<td>onAfterRestore</td>
+</tr>
+</tbody>
+</table>
+<h2 id="建立模型">建立模型</h2>
+<p>为了了解每个事件的触发条件，我们先建立以下模型</p>
+<h2 id="模型代码appmodelusersphp">模型代码<code>app/model/Users.php</code></h2>
+<pre><code class="language-php">&lt;?php
+namespace app\model;
+
+use think\Model;
+use think\model\concern\SoftDelete;
+
+class Users extends Model
+{
+    // 软删除
+    use SoftDelete;
+
+    public static function onAfterRead($user) {
+        dump('查询后');
+    }
+
+    public static function onBeforeInsert($user) {
+        dump('新增前');
+    }
+
+    public static function onAfterInsert($user) {
+        dump('新增后');
+    }
+
+    public static function onBeforeUpdate($user) {
+        dump('更新前');
+    }
+
+    public static function onAfterUpdate($user) {
+        dump('更新后');
+    }
+
+    public static function onBeforeWrite($user) {
+        dump('写入前');
+    }
+
+    public static function onAfterWrite($user) {
+        dump('写入后');
+    }
+
+    public static function onBeforeDelete($user) {
+        dump('删除前');
+    }
+
+    public static function onAfterDelete($user) {
+        dump('删除后');
+    }
+
+    public static function onBeforeRestore($user) {
+        dump('恢复前');
+    }
+
+    public static function onAfterRestore($user) {
+        dump('恢复后');
+    }
+}
+</code></pre>
+<h2 id="数据表">数据表</h2>
+<pre><code class="language-mysql">CREATE TABLE `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+ `name` varchar(32) NOT NULL COMMENT '姓名',
+ `area` varchar(32) NOT NULL COMMENT '区域',
+ `address` varchar(64) NOT NULL COMMENT '地址',
+ `balance` decimal(9,2) NOT NULL COMMENT '余额',
+ `password` varchar(255) NOT NULL COMMENT '密码',
+ `status` int(11) NOT NULL COMMENT '状态',
+ `last` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后活跃时间',
+ `phone` varchar(11) NOT NULL COMMENT '手机号',
+ `delete_time` int(10) unsigned DEFAULT NULL COMMENT '删除时间',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='用户表'
+</code></pre>
+<h2 id="测试代码">测试代码</h2>
+<h3 id="代码">代码</h3>
+<p>然后通过以下代码去操作数据库</p>
+<pre><code class="language-php">use \app\model\Users;
+$data = [
+    'name' =&gt; 'test',
+    'phone' =&gt; '13888888888',
+    'area' =&gt; '0',
+    'address' =&gt; '广东省韶关市',
+    'balance' =&gt; '0',
+    'password' =&gt; '0',
+    'status' =&gt; '0',
+    'last' =&gt; '2019-01-01 00:00:00',
+];
+
+dump('Users::create($data)');
+$users = Users::create($data);
+
+dump('Users::insert($data)');
+Users::insert($data);
+
+dump('Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;update([&quot;area&quot; =&gt; 1])');
+Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;update([&quot;area&quot; =&gt; 1]);
+
+dump('Users::update([&quot;area&quot; =&gt; 1], [&quot;id&quot; =&gt; $users[&quot;id&quot;]])');
+Users::update([&quot;area&quot; =&gt; 1], [&quot;id&quot; =&gt; $users[&quot;id&quot;]]);
+
+dump('$users-&gt;save([&quot;area&quot; =&gt; 2])');
+$users-&gt;save([&quot;area&quot; =&gt; 2]);
+
+dump('Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;delete()');
+Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;delete();
+
+dump('Users::where(&quot;id&quot;, &quot;&gt;&quot;, 0)-&gt;find()');
+$users = Users::where(&quot;id&quot;, &quot;&gt;&quot;, 0)-&gt;find();
+
+dump('Users::destroy($users[&quot;id&quot;])');
+Users::destroy($users[&quot;id&quot;]);
+
+dump('$users-&gt;restore()');
+$users-&gt;restore();
+
+dump('$users-&gt;delete()');
+$users-&gt;delete();
+</code></pre>
+<h3 id="执行结果">执行结果</h3>
+<p>执行之后，返回以下结果</p>
+<pre><code>^ &quot;Users::create($data)&quot;
+^ &quot;写入前&quot;
+^ &quot;新增前&quot;
+^ &quot;新增后&quot;
+^ &quot;写入后&quot;
+^ &quot;Users::insert($data)&quot;
+^ &quot;Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;update([&quot;area&quot; =&gt; 1])&quot;
+^ &quot;Users::update([&quot;area&quot; =&gt; 1], [&quot;id&quot; =&gt; $users[&quot;id&quot;]])&quot;
+^ &quot;写入前&quot;
+^ &quot;更新前&quot;
+^ &quot;更新后&quot;
+^ &quot;写入后&quot;
+^ &quot;$users-&gt;save([&quot;area&quot; =&gt; 2])&quot;
+^ &quot;写入前&quot;
+^ &quot;更新前&quot;
+^ &quot;更新后&quot;
+^ &quot;写入后&quot;
+^ &quot;Users::where(&quot;id&quot;, $users[&quot;id&quot;])-&gt;delete()&quot;
+^ &quot;Users::where(&quot;id&quot;, &quot;&gt;&quot;, 0)-&gt;find()&quot;
+^ &quot;查询后&quot;
+^ &quot;Users::destroy($users[&quot;id&quot;])&quot;
+^ &quot;查询后&quot;
+^ &quot;删除前&quot;
+^ &quot;删除后&quot;
+^ &quot;$users-&gt;restore()&quot;
+^ &quot;恢复前&quot;
+^ &quot;恢复后&quot;
+^ &quot;$users-&gt;delete()&quot;
+^ &quot;删除前&quot;
+^ &quot;删除后&quot;
+</code></pre>
+<h2 id="总结">总结</h2>
+<h3 id="create">create()</h3>
+<p>模型创建数据方法，会触发写入前、新增前、新增后、写入后。使用模型的<code>save()</code>和<code>saveAll()</code>来新增方法也会触发这几个事件。</p>
+<h3 id="insert">insert()</h3>
+<p><code>insert()</code>是Db类的方法，不是模型方法，不会触发模型事件。</p>
+<h3 id="update">update()</h3>
+<p><code>update()</code>是Db类的方法，不是模型方法，不会触发模型事件。</p>
+<p>如果是模型静态调用<code>update()</code>，则执行的是模型的<code>update</code>方法，而模型的<code>update</code>方法会调用<code>save()</code>方法，所以跟模型的<code>save()</code>方法一样，会触发写入前、更新前、更新后、写入后事件<br>
+感谢 @dejavu 的提醒</p>
+<h3 id="save">save()</h3>
+<p>使用模型的<code>save()</code>方法来更新数据，会触发写入前、更新前、更新后、写入后事件。</p>
+<h3 id="delete">delete()</h3>
+<p>如果是使用模型方法查询出来数据，然后再删除数据，则会触发删除前、删除后事件。<br>
+如果是直接使用条件删除，则不会触发模型事件。因为直接使用条件删除，这时候的<code>delete()</code>方法不是模型方法。</p>
+<h3 id="find">find()</h3>
+<p>该查询方法会触发查询后事件</p>
+<h3 id="destroy">destroy()</h3>
+<p>该删除数据方法会触发查询后、删除前、删除后。所以，该方法是先查询出数据，然后再删除该数据。</p>
+<h3 id="restore">restore()</h3>
+<p>该软删除恢复方法会触发恢复前、恢复后方法</p>
+<blockquote>
+<p>参考来源 https://blog.ll00.cn/archives/147.html</p>
+</blockquote>
 
             </div>
             
@@ -624,7 +854,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://wsd.im/post/hello-gridea/" title="Hello Gridea">https://wsd.im/post/hello-gridea/</a>
+      <a href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/" title="ThinkPHP6之模型事件的触发条件">https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -633,18 +863,16 @@
   </ul>
   <div class="tags">
     
-      <a href="https://wsd.im/tag/LjLWkx2fG/"># Gridea</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="ThinkPHP6之模型事件的触发条件" href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">ThinkPHP6之模型事件的触发条件</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="ThinkPHP6之模型事件的触发条件" href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Hello Gridea" href="https://wsd.im/post/hello-gridea/">Hello Gridea</a>
+        <a class="nav-mobile-next" title="Hello Gridea" href="https://wsd.im/post/hello-gridea/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>

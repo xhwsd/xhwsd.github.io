@@ -9,7 +9,7 @@
 <meta name="description" content="什么东东的博客！">
 <meta name="theme-color" content="#000">
 <title>WSD.IM</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1630761618854">
+<link rel="shortcut icon" href="/favicon.ico?v=1630932273590">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -198,7 +198,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">2</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -270,9 +270,27 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="1">非常好！目前共计1篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="2">非常好！目前共计2篇日志，继续努力！</h2>
       
     </div>
+    
+      
+      
+        <div class="node-title">
+          <h2 class="tag-year">2021</h2>
+        </div>    
+        
+      
+      <a href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              09-06
+              <small>ThinkPHP6之模型事件的触发条件</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
     
       
       
@@ -539,6 +557,254 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/"" data-c="
+          &lt;h2 id=&#34;模型事件&#34;&gt;模型事件&lt;/h2&gt;
+&lt;p&gt;首先，从手册上，我们可以知道模型支持以下事件：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;事件&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;事件方法名&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;after_read&lt;/td&gt;
+&lt;td&gt;查询后&lt;/td&gt;
+&lt;td&gt;onAfterRead&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before_insert&lt;/td&gt;
+&lt;td&gt;新增前&lt;/td&gt;
+&lt;td&gt;onBeforeInsert&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;after_insert&lt;/td&gt;
+&lt;td&gt;新增后&lt;/td&gt;
+&lt;td&gt;onAfterInsert&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before_update&lt;/td&gt;
+&lt;td&gt;更新前&lt;/td&gt;
+&lt;td&gt;onBeforeUpdate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;after_update&lt;/td&gt;
+&lt;td&gt;更新后&lt;/td&gt;
+&lt;td&gt;onAfterUpdate&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before_write&lt;/td&gt;
+&lt;td&gt;写入前&lt;/td&gt;
+&lt;td&gt;onBeforeWrite&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;after_write&lt;/td&gt;
+&lt;td&gt;写入后&lt;/td&gt;
+&lt;td&gt;onAfterWrite&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before_delete&lt;/td&gt;
+&lt;td&gt;删除前&lt;/td&gt;
+&lt;td&gt;onBeforeDelete&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;after_delete&lt;/td&gt;
+&lt;td&gt;删除后&lt;/td&gt;
+&lt;td&gt;onAfterDelete&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before_restore&lt;/td&gt;
+&lt;td&gt;恢复前&lt;/td&gt;
+&lt;td&gt;onBeforeRestore&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;after_restore&lt;/td&gt;
+&lt;td&gt;恢复后&lt;/td&gt;
+&lt;td&gt;onAfterRestore&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;建立模型&#34;&gt;建立模型&lt;/h2&gt;
+&lt;p&gt;为了了解每个事件的触发条件，我们先建立以下模型&lt;/p&gt;
+&lt;h2 id=&#34;模型代码appmodelusersphp&#34;&gt;模型代码&lt;code&gt;app/model/Users.php&lt;/code&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;&amp;lt;?php
+namespace app\model;
+
+use think\Model;
+use think\model\concern\SoftDelete;
+
+class Users extends Model
+{
+    // 软删除
+    use SoftDelete;
+
+    public static function onAfterRead($user) {
+        dump(&#39;查询后&#39;);
+    }
+
+    public static function onBeforeInsert($user) {
+        dump(&#39;新增前&#39;);
+    }
+
+    public static function onAfterInsert($user) {
+        dump(&#39;新增后&#39;);
+    }
+
+    public static function onBeforeUpdate($user) {
+        dump(&#39;更新前&#39;);
+    }
+
+    public static function onAfterUpdate($user) {
+        dump(&#39;更新后&#39;);
+    }
+
+    public static function onBeforeWrite($user) {
+        dump(&#39;写入前&#39;);
+    }
+
+    public static function onAfterWrite($user) {
+        dump(&#39;写入后&#39;);
+    }
+
+    public static function onBeforeDelete($user) {
+        dump(&#39;删除前&#39;);
+    }
+
+    public static function onAfterDelete($user) {
+        dump(&#39;删除后&#39;);
+    }
+
+    public static function onBeforeRestore($user) {
+        dump(&#39;恢复前&#39;);
+    }
+
+    public static function onAfterRestore($user) {
+        dump(&#39;恢复后&#39;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;数据表&#34;&gt;数据表&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-mysql&#34;&gt;CREATE TABLE `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &#39;ID&#39;,
+ `name` varchar(32) NOT NULL COMMENT &#39;姓名&#39;,
+ `area` varchar(32) NOT NULL COMMENT &#39;区域&#39;,
+ `address` varchar(64) NOT NULL COMMENT &#39;地址&#39;,
+ `balance` decimal(9,2) NOT NULL COMMENT &#39;余额&#39;,
+ `password` varchar(255) NOT NULL COMMENT &#39;密码&#39;,
+ `status` int(11) NOT NULL COMMENT &#39;状态&#39;,
+ `last` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT &#39;最后活跃时间&#39;,
+ `phone` varchar(11) NOT NULL COMMENT &#39;手机号&#39;,
+ `delete_time` int(10) unsigned DEFAULT NULL COMMENT &#39;删除时间&#39;,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT=&#39;用户表&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;测试代码&#34;&gt;测试代码&lt;/h2&gt;
+&lt;h3 id=&#34;代码&#34;&gt;代码&lt;/h3&gt;
+&lt;p&gt;然后通过以下代码去操作数据库&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;use \app\model\Users;
+$data = [
+    &#39;name&#39; =&amp;gt; &#39;test&#39;,
+    &#39;phone&#39; =&amp;gt; &#39;13888888888&#39;,
+    &#39;area&#39; =&amp;gt; &#39;0&#39;,
+    &#39;address&#39; =&amp;gt; &#39;广东省韶关市&#39;,
+    &#39;balance&#39; =&amp;gt; &#39;0&#39;,
+    &#39;password&#39; =&amp;gt; &#39;0&#39;,
+    &#39;status&#39; =&amp;gt; &#39;0&#39;,
+    &#39;last&#39; =&amp;gt; &#39;2019-01-01 00:00:00&#39;,
+];
+
+dump(&#39;Users::create($data)&#39;);
+$users = Users::create($data);
+
+dump(&#39;Users::insert($data)&#39;);
+Users::insert($data);
+
+dump(&#39;Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;update([&amp;quot;area&amp;quot; =&amp;gt; 1])&#39;);
+Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;update([&amp;quot;area&amp;quot; =&amp;gt; 1]);
+
+dump(&#39;Users::update([&amp;quot;area&amp;quot; =&amp;gt; 1], [&amp;quot;id&amp;quot; =&amp;gt; $users[&amp;quot;id&amp;quot;]])&#39;);
+Users::update([&amp;quot;area&amp;quot; =&amp;gt; 1], [&amp;quot;id&amp;quot; =&amp;gt; $users[&amp;quot;id&amp;quot;]]);
+
+dump(&#39;$users-&amp;gt;save([&amp;quot;area&amp;quot; =&amp;gt; 2])&#39;);
+$users-&amp;gt;save([&amp;quot;area&amp;quot; =&amp;gt; 2]);
+
+dump(&#39;Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;delete()&#39;);
+Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;delete();
+
+dump(&#39;Users::where(&amp;quot;id&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, 0)-&amp;gt;find()&#39;);
+$users = Users::where(&amp;quot;id&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, 0)-&amp;gt;find();
+
+dump(&#39;Users::destroy($users[&amp;quot;id&amp;quot;])&#39;);
+Users::destroy($users[&amp;quot;id&amp;quot;]);
+
+dump(&#39;$users-&amp;gt;restore()&#39;);
+$users-&amp;gt;restore();
+
+dump(&#39;$users-&amp;gt;delete()&#39;);
+$users-&amp;gt;delete();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;执行结果&#34;&gt;执行结果&lt;/h3&gt;
+&lt;p&gt;执行之后，返回以下结果&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;^ &amp;quot;Users::create($data)&amp;quot;
+^ &amp;quot;写入前&amp;quot;
+^ &amp;quot;新增前&amp;quot;
+^ &amp;quot;新增后&amp;quot;
+^ &amp;quot;写入后&amp;quot;
+^ &amp;quot;Users::insert($data)&amp;quot;
+^ &amp;quot;Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;update([&amp;quot;area&amp;quot; =&amp;gt; 1])&amp;quot;
+^ &amp;quot;Users::update([&amp;quot;area&amp;quot; =&amp;gt; 1], [&amp;quot;id&amp;quot; =&amp;gt; $users[&amp;quot;id&amp;quot;]])&amp;quot;
+^ &amp;quot;写入前&amp;quot;
+^ &amp;quot;更新前&amp;quot;
+^ &amp;quot;更新后&amp;quot;
+^ &amp;quot;写入后&amp;quot;
+^ &amp;quot;$users-&amp;gt;save([&amp;quot;area&amp;quot; =&amp;gt; 2])&amp;quot;
+^ &amp;quot;写入前&amp;quot;
+^ &amp;quot;更新前&amp;quot;
+^ &amp;quot;更新后&amp;quot;
+^ &amp;quot;写入后&amp;quot;
+^ &amp;quot;Users::where(&amp;quot;id&amp;quot;, $users[&amp;quot;id&amp;quot;])-&amp;gt;delete()&amp;quot;
+^ &amp;quot;Users::where(&amp;quot;id&amp;quot;, &amp;quot;&amp;gt;&amp;quot;, 0)-&amp;gt;find()&amp;quot;
+^ &amp;quot;查询后&amp;quot;
+^ &amp;quot;Users::destroy($users[&amp;quot;id&amp;quot;])&amp;quot;
+^ &amp;quot;查询后&amp;quot;
+^ &amp;quot;删除前&amp;quot;
+^ &amp;quot;删除后&amp;quot;
+^ &amp;quot;$users-&amp;gt;restore()&amp;quot;
+^ &amp;quot;恢复前&amp;quot;
+^ &amp;quot;恢复后&amp;quot;
+^ &amp;quot;$users-&amp;gt;delete()&amp;quot;
+^ &amp;quot;删除前&amp;quot;
+^ &amp;quot;删除后&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;h3 id=&#34;create&#34;&gt;create()&lt;/h3&gt;
+&lt;p&gt;模型创建数据方法，会触发写入前、新增前、新增后、写入后。使用模型的&lt;code&gt;save()&lt;/code&gt;和&lt;code&gt;saveAll()&lt;/code&gt;来新增方法也会触发这几个事件。&lt;/p&gt;
+&lt;h3 id=&#34;insert&#34;&gt;insert()&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;insert()&lt;/code&gt;是Db类的方法，不是模型方法，不会触发模型事件。&lt;/p&gt;
+&lt;h3 id=&#34;update&#34;&gt;update()&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;update()&lt;/code&gt;是Db类的方法，不是模型方法，不会触发模型事件。&lt;/p&gt;
+&lt;p&gt;如果是模型静态调用&lt;code&gt;update()&lt;/code&gt;，则执行的是模型的&lt;code&gt;update&lt;/code&gt;方法，而模型的&lt;code&gt;update&lt;/code&gt;方法会调用&lt;code&gt;save()&lt;/code&gt;方法，所以跟模型的&lt;code&gt;save()&lt;/code&gt;方法一样，会触发写入前、更新前、更新后、写入后事件&lt;br&gt;
+感谢 @dejavu 的提醒&lt;/p&gt;
+&lt;h3 id=&#34;save&#34;&gt;save()&lt;/h3&gt;
+&lt;p&gt;使用模型的&lt;code&gt;save()&lt;/code&gt;方法来更新数据，会触发写入前、更新前、更新后、写入后事件。&lt;/p&gt;
+&lt;h3 id=&#34;delete&#34;&gt;delete()&lt;/h3&gt;
+&lt;p&gt;如果是使用模型方法查询出来数据，然后再删除数据，则会触发删除前、删除后事件。&lt;br&gt;
+如果是直接使用条件删除，则不会触发模型事件。因为直接使用条件删除，这时候的&lt;code&gt;delete()&lt;/code&gt;方法不是模型方法。&lt;/p&gt;
+&lt;h3 id=&#34;find&#34;&gt;find()&lt;/h3&gt;
+&lt;p&gt;该查询方法会触发查询后事件&lt;/p&gt;
+&lt;h3 id=&#34;destroy&#34;&gt;destroy()&lt;/h3&gt;
+&lt;p&gt;该删除数据方法会触发查询后、删除前、删除后。所以，该方法是先查询出数据，然后再删除该数据。&lt;/p&gt;
+&lt;h3 id=&#34;restore&#34;&gt;restore()&lt;/h3&gt;
+&lt;p&gt;该软删除恢复方法会触发恢复前、恢复后方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考来源 https://blog.ll00.cn/archives/147.html&lt;/p&gt;
+&lt;/blockquote&gt;
+">ThinkPHP6之模型事件的触发条件</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://wsd.im/post/test/"" data-c="
