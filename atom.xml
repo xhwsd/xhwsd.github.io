@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wsd.im</id>
     <title>WSD.IM</title>
-    <updated>2021-09-06T12:44:37.597Z</updated>
+    <updated>2021-09-07T01:46:48.259Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wsd.im"/>
     <link rel="self" href="https://wsd.im/atom.xml"/>
@@ -16,7 +16,15 @@
         <link href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">
         </link>
         <updated>2021-09-06T12:32:42.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="模型事件">模型事件</h2>
+        <summary type="html"><![CDATA[<blockquote>
+<p>文章来源 https://blog.ll00.cn/archives/147.html</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>文章来源 https://blog.ll00.cn/archives/147.html</p>
+</blockquote>
+<!-- more -->
+<h2 id="模型事件">模型事件</h2>
 <p>首先，从手册上，我们可以知道模型支持以下事件：</p>
 <table>
 <thead>
@@ -256,9 +264,6 @@ $users-&gt;delete();
 <p>该删除数据方法会触发查询后、删除前、删除后。所以，该方法是先查询出数据，然后再删除该数据。</p>
 <h3 id="restore">restore()</h3>
 <p>该软删除恢复方法会触发恢复前、恢复后方法</p>
-<blockquote>
-<p>参考来源 https://blog.ll00.cn/archives/147.html</p>
-</blockquote>
 ]]></content>
     </entry>
     <entry>
