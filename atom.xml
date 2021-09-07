@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://wsd.im</id>
-    <title>WSD.IM</title>
-    <updated>2021-09-07T01:47:32.807Z</updated>
+    <title>万事达</title>
+    <updated>2021-09-07T01:59:52.955Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://wsd.im"/>
     <link rel="self" href="https://wsd.im/atom.xml"/>
     <subtitle>什么东东的博客！</subtitle>
     <logo>https://wsd.im/images/avatar.png</logo>
     <icon>https://wsd.im/favicon.ico</icon>
-    <rights>All rights reserved 2021, WSD.IM</rights>
+    <rights>All rights reserved 2021, 万事达</rights>
     <entry>
         <title type="html"><![CDATA[ThinkPHP6之模型事件的触发条件]]></title>
         <id>https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/</id>
         <link href="https://wsd.im/post/thinkphp6-zhi-mo-xing-shi-jian-de-hong-fa-tiao-jian/">
         </link>
         <updated>2021-09-06T12:32:42.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>文章来源 https://blog.ll00.cn/archives/147.html</p>
-</blockquote>
+        <summary type="html"><![CDATA[<p>首先说明文章来源 https://blog.ll00.cn/archives/147.html，转载是为了便于查看。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>文章来源 https://blog.ll00.cn/archives/147.html</p>
-</blockquote>
+        <content type="html"><![CDATA[<p>首先说明文章来源 https://blog.ll00.cn/archives/147.html，转载是为了便于查看。</p>
 <!-- more -->
 <h2 id="模型事件">模型事件</h2>
 <p>首先，从手册上，我们可以知道模型支持以下事件：</p>
