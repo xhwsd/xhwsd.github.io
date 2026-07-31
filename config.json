@@ -36,7 +36,7 @@
     "_nightTheme": "dark_colorblind",
     "_urlMode": "pinyin",
     "_style": "",
-    "_script": "",
+    "script": "<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>",
     "_head": "",
     "_allHead": "",
     "_indexStyle": "",
