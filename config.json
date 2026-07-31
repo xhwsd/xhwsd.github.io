@@ -1,9 +1,9 @@
 {
     "title": "Hello! 树先生",
-    "subTitle": "好好学习，天天向上！",
+    "subTitle": "HTTP://WSD.CX",
     "avatarUrl": "https://wsd.cx/avatar.svg",
     "GMEEK_VERSION": "last",
-    
+
     "_displayTitle": "Hello! 树先生",
     "homeUrl": "https://wsd.cx",
     "faviconUrl": "https://wsd.cx/favicon.svg",
@@ -36,14 +36,14 @@
     "_nightTheme": "dark_colorblind",
     "_urlMode": "pinyin",
     "_style": "",
-    "script": "<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>",
+    "script": "<script src='https://blog.meekdai.com/Gmeek/plugins/articletoc.js'></script>",
     "_head": "",
     "_allHead": "",
     "_indexStyle": "",
     "_indexScript": "",
     "_showPostSource": 1,
     "_rssSplit": "sentence",
-    "bottomText": "WSD.CX",
+    "bottomText": "永远相信美好的事情即将发生！",
     "_ogImage": "https://cdn.jsdelivr.net/gh/Meekdai/meekdai.github.io/logo64.jpg",
     "_primerCSS": "<link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />",
     "needComment": 0,
